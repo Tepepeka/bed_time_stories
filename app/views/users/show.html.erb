@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-12">
+      <div class="card">
+      
+        <div class="card-header text-center">
+          <%= image_tag ("logo.png") %>
+        </div>
+
+        <div class="card-body">
+          <h1><strong><u>User info</u></strong></h1>
+          <h2>Hi, my name is : <%= @user.name %></h2>
+          <p>my email is : <%= @user.email %></p>
+          <p>description : <%= @user.description %></p>
+       
+         <div>
+            <h2><strong><u>Stories list :</u></strong></h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Likes</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @user.stories.each do |story| %>
+                  <tr>
+                    <th scope="row"><%= story.id %></th>
+                    <td><%= link_to story.title, story_path(story) %></td>
+                    <td><%= story.likes.size%>  <i class="fa fa-heart"></td>
+                    <td>
+                      <%= link_to "Edit", edit_story_path(story), class: "btn btn-secondary" %>
+                      <%= link_to "Delete", story_path(story), class: "btn btn-danger", method: "DELETE", data: {confirm: 'Are you sure?'} %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+
+        <div class="card-footer text-end">
+          <p>
+          <%= link_to "Edit", edit_user_path, class: "btn btn-secondary" %>
+          <%= link_to "Back", root_path, class: "btn btn-primary" %>
+          </p>
+
+          <p>
+          <%= link_to "Change my password", edit_user_registration_path %>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div >
+</div>

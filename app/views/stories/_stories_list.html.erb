@@ -1,0 +1,40 @@
+<div class='pb-4 row d-flex justify-content-evenly'>
+    <% @stories.sort{|a,b| b.created_at <=> a.created_at}.each do |story| %>
+        <div class="card m-3 card-list">
+
+            <div class="card-header card-header-list">
+                <%= image_tag ("image_test.jpg"), class: "resize-card img-responsive" %>
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title"><strong><%= story.title %></strong></h5>
+                <p class="card-text"><%= story.content.truncate(200) %></p>
+                <p class="card-author"><em><%= story.author %></em></p>
+            </div>
+
+            <div class="card-footer text-end">
+                <%= link_to "Show", story_path(story.id), class: "btn btn-primary" %>
+
+                <!-- Si utilisateur connecté-->
+                <% if current_user %>
+
+                    <!-- Si déjà liké unlike dispo-->
+                    <% if story.likes.where(user: current_user, story: story).count != 0 %>
+                        <a href=<%=story_like_path(controller: :likes, action: :destroy, story_id: story.id,id: story.likes.where(user: current_user, story: story)[0].id)%> data-method='delete'><p ><i class="fa fa-heart" style="color:red"></i>  
+                        <%=story.likes.size%></p></a>
+                    <!-- sinon like dispo-->
+                    <%else%>
+                        <a href=<%=story_likes_path(controller: :likes, action: :create, story_id: story.id)%> data-method='post'><p><i class="fa fa-heart" style="color:green"></i>  
+                        <%=story.likes.size%></p></a>
+                    <%end%>  
+                <!-- sinon pas de lien-->
+                <%else%>
+                    <p><i class="fa fa-heart" style="color:grey"></i>  
+                    <%=story.likes.size%></p></a>
+
+                <% end %>
+                
+            </div>
+        </div>
+    <%end %>
+</div>

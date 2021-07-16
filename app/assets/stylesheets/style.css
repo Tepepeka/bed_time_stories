@@ -1,0 +1,59 @@
+/*NAVBAR*/
+
+#logo-navbar {
+    width: 38px;
+    height: 38px;
+}
+
+#logo-navbar-google {
+    width: 22px;
+    height: 22px;
+}
+
+/*JUMBOTRON*/
+
+.jumbotron {
+    background-image: url("jumbotron_test.jpg");
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/*CARDS*/
+
+.stories {
+    padding-top: 1rem;
+}
+
+.card-list {
+    width: 18rem;
+}
+
+.card-best {
+    width: 22rem;
+}
+
+
+.resize-card {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.background-card {
+    background: no-repeat center/100% url("image_test.jpg");
+}
+
+.card-header {
+    padding: 5px 0!important;
+}
+
+/*FORM*/
+
+
+
+/*FOOTER*/
+
+/*ALERT*/
